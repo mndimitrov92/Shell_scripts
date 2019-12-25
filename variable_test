@@ -1,0 +1,8 @@
+#!/bin/bash
+# Example variable usage in a script
+
+a=Variable1
+b=Other_variable
+
+echo This is $a
+echo This also is $b

@@ -1,0 +1,15 @@
+#!/bin/bash
+# Simple script with user input
+
+# In order to execute a command when echoing it you should do it like
+# otherwise it will just print the command name
+test_command=`whoami`
+
+echo Executing command ehoemi: $test_command
+
+echo
+echo "Hello, there! Write something and I'll print it"
+# The next line reads the user input and saves it in a variable
+read user_input
+echo "See, you wrote: $user_input"
+
