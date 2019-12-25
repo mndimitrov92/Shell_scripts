@@ -1,0 +1,26 @@
+#!/bin/bash
+# if-else syntax
+
+# Check a variable
+test=50
+if [ $test -eq 50 ]
+  then
+  echo "Well done"
+else
+  echo "Too bad"
+fi
+
+#check if a file exists
+echo "Add a filename to check whether it exists in your home dir"
+read the_file
+
+# -e flag for checking whether a file exists
+if [ -e $HOME/$the_file ]
+  then
+  echo "yup, there is a file"
+else
+  echo "no file, sorry"
+fi
+
+
+

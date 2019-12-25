@@ -1,0 +1,25 @@
+#!/bin/bash
+# Countdown script
+
+count=10
+num=0
+while [ $count -gt 0 ]
+  do
+  echo "Seconds left $count"
+  echo
+  sleep 1
+  count=`expr $count - 1`
+  num=`expr $num + 1`
+done
+echo "Countdown stopped"
+echo
+
+
+# Count increment till 5
+test=1
+while [ $test -le 5 ]
+  do
+  echo "Test $test"
+  ((test++))
+done
+

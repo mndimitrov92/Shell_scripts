@@ -1,0 +1,28 @@
+#!/bin/bash
+
+echo "Select onof the options below"
+echo "a = Show the date"
+echo "b = Show the calendar"
+echo "c = Show the system up time"
+echo "d = Show logged in users"
+echo
+read user_choice
+
+case $user_choice in 
+a) date;;
+b) cal;;
+c) uptime;;
+d) who;;
+*) echo "Invalid option"
+esac
+
+
+
+#  Other option for case scripts
+echo "Choose a day of the week"
+read now
+case $now in
+Mon|Tue|Wed|Thu|Fri) echo "Weekday";;
+Sat|Sun) echo "Weekend";;
+*) ;;
+esac

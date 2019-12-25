@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Simple for loop
+for i in 1 2 3 4 5
+  do
+  echo "Count $i"
+done
+
+echo
+# Looping through a list from a variable
+list_var="action1 action2 action3"
+for action in $list_var
+  do
+  echo "Doing $action"
+done
+
+echo
+# Looping through a sequence of numbers
+for i in {1..10}
+  do
+  echo "Test $i"
+done
