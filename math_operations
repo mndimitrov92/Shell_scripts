@@ -1,0 +1,22 @@
+#!/bin/bash
+# Description: Test different kinds of math operands
+
+NUMBER=5
+# == let ==
+let RESULT1=NUMBER+5
+# == (( )) ==
+RESULT2=$(( NUMBER + 6 ))
+# == [ ] ==
+RESULT3=$[ NUMBER + 7 ]
+# == expr ==
+RESULT4=`expr $NUMBER + 8`
+#Another way is $(expr $NUMBER + 8)
+
+# == bc == it is used to operate with floats
+RESULT5=$(echo "$NUMBER + 4.5" | bc)
+
+echo "Result 1: $RESULT1"
+echo "Result 2: $RESULT2"
+echo "Result 3: $RESULT3"
+echo "Result 4: $RESULT4"
+echo "Result 5: $RESULT5"

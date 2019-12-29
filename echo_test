@@ -1,0 +1,24 @@
+#!/bin/bash
+# Print the users input and capture the time needed to perform the commands
+# Start the time measurement and convert it to UNIX format 
+START=$(date +%s)
+
+read -p "Your name: " NAME
+# -s flag hides the input from the terminal
+read -sp "Password: " PASSWORD
+echo
+echo "Name: $NAME  Pass: $PASSWORD"
+echo
+# read from file and assign to a variable
+read HOSTNAME < /etc/hosts
+echo "Host: $HOSTNAME"
+echo
+# 2 ways to print commands outputs
+echo "Hostname: $(cal)"
+echo "Date: `date`"
+echo
+# End the time measurement
+END=$(date +%s)
+TIME_DIFF=$(( END - START ))
+echo "Time elapsed $TIME_DIFF seconds." 
+
