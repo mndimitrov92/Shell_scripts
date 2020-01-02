@@ -1,0 +1,18 @@
+#!/bin/bash
+# Exit statuses can be 0-255
+
+VAR=1
+
+let VAR++
+let VAR++
+echo "VAR: $VAR"
+exit 5
+
+let VAR++
+let VAR++
+echo "VAR: $VAR"
+exit 1
+
+let VAR++
+let VAR++
+echo "VAR: $VAR"
