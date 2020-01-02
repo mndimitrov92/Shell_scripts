@@ -1,0 +1,8 @@
+#!/bin/bash
+# Assigning arguments into variables
+
+FIRST=$1
+SECOND=$2
+
+let RESULT=FIRST+SECOND
+echo "Result of first and second argument: $RESULT"

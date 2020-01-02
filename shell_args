@@ -1,0 +1,12 @@
+#!/bin/bash
+# Description: Script for capturing arguments
+
+# Changing the internal field separator from space to ,
+IFS=","
+
+echo "Script name: $0"
+echo "First Argument: $1"
+echo "Second Argument: $2"
+echo "All arguments with \$@: $@"
+echo "All arguments with \$*: $*"
+echo "Argument count: $#"
