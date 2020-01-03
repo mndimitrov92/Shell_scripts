@@ -1,0 +1,12 @@
+#!/bin/bash
+# Description: Loop through all arguments and print them all
+
+COUNT=1
+
+# $@ - all arguments as separate strings
+# $* - capture all arguments but as one string
+for ARG in $@
+  do 
+    echo "$COUNT: $ARG"
+    let COUNT++ 
+done
