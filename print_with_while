@@ -1,0 +1,27 @@
+#!/bin/bash
+# Description: Script for printing the file contents with line numbers using while
+
+# Argument check
+if [ $# -ne 1 ]; then
+  echo "Exactly only one argument is needed $0 <filepath>"
+  exit 1
+fi
+
+# check if provided arguments is a file
+if ! [ -f $1 ]; then
+  echo "File does not exist"
+  exit 2
+fi
+
+FILENAME=$1
+COUNT=1
+
+# First way of reading a file
+while read line
+  do
+  echo "$COUNT: $line"
+  let COUNT++
+done < "$FILENAME"
+# Without the quotations of the file, when a file is given with a twow word name, the script will fail.
+# In this case check the IFS(internal field separator) and change to whatevers is needed. It is done by:
+# IFS=$" \t\n"  <- this is the default 
