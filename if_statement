@@ -1,0 +1,19 @@
+#!/bin/bash
+# Description: if more or less than two arguments => exit the script
+if [ $# -ne 2 ]; then
+  echo "Only two arguments needed, tun the script with only 2 arguments"
+  exit 1
+fi
+
+FIRST=$1
+SECOND=$2
+
+let RESULT=FIRST*SECOND
+
+if [ $? -ne 0 ]; then
+  echo "You need to put 2 integer arguments"
+  exit 2
+else
+  echo "Exit status from let command: $?" 
+  echo "$FIRST * $SECOND = $RESULT"
+fi

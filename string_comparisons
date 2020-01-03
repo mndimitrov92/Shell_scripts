@@ -1,0 +1,11 @@
+#!/bin/bash
+
+STR1="hello there"
+STR2="Hello there"
+
+if [ "$STR1" = "$STR2" ]; then
+  echo "Equal"
+else
+  echo "Not equal"
+fi
+

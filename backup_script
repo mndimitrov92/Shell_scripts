@@ -1,0 +1,32 @@
+#!/bin/bash
+# Description: backup files from current directory to ./backup directory
+# The script only accepts 1 parameter for the destination directory
+
+CURRENT_DIR=$(pwd)
+
+# Parameter check
+if [ $# -ne 1 ]; then
+  echo "You must use only one parameter for the backup destination. Run $0 with backup_dir"
+  exit 1
+fi
+
+# Destination path check
+DESTINATION=$1
+if [[ $DESTINATION != */backup ]]; then
+  echo "Wrong destination path. Path must end with /backup"
+  exit 2
+fi
+
+# Create destination folder
+DATE=$(date +%Y-%m-%d_%H_%M_%S)
+mkdir -p $DESTINATION/$DATE
+
+# Copy md files from current dir to destination
+cp $CURRENT_DIR/*.md $DESTINATION/$DATE
+
+if [ $? -eq 0 ]; then
+  echo "Backup complete"
+else
+  echo "Backup failed"
+fi
+

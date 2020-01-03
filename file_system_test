@@ -1,0 +1,55 @@
+#!/bin/bash
+# Test file permissions
+# Flags:
+# -e -> True if file or directory exits
+# -f -> True if file exists
+# -d -> True if directory exists
+# -x -> True if file is executable for the current user
+# -L -> True if symbolic link
+# -w -> True if writable for the current user
+# -r -> True if the file is readable for the current user
+
+# Desctription: For the provided file as argument, print a summary of the permissions the user has
+
+# Argument check
+if [ $# -ne 1 ]; then
+  echo "Provide only one argument"
+  exit 1
+fi
+
+THE_FILE=$1
+
+# Default permissions
+READ_VAR="NO"
+WRITE_VAR="NO"
+EXEC_VAR="NO"
+# Check if the file exists
+if [ -f $THE_FILE ]; then
+  if [ -r $THE_FILE ]; then
+    READ_VAR="YES"
+  fi
+  
+  if [ -w $THE_FILE ]; then
+    WRITE_VAR="YES"
+  fi
+
+  if [ -x $THE_FILE ]; then
+    EXEC_VAR="YES"
+  fi
+  
+  # Write summary
+  echo "File ($THE_FILE) with permissions"
+  echo "READ: $READ_VAR"
+  echo "WRITE: $WRITE_VAR"
+  echo "EXECUTE: $EXEC_VAR"
+else
+  if [ -d $THE_FILE ]; then
+    echo "$THE_FILE is a directory"
+  fi
+  echo "File: $THE_FILE  does not exist"
+fi
+
+
+
+
+
