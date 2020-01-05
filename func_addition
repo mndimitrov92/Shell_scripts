@@ -1,0 +1,34 @@
+#!/bin/bash
+# Description: Function practise - addition of 2 numbers
+
+# first way to declare a function
+function addition {
+  local FIRST=$1  # with the local keyword specify that this variable will be seen only in the scope of the function
+  local SECOND=$2 # $1 and $2 are the parameters of the function
+  let RESULT=FIRST+SECOND  # since local is not specified this variable can be accesses outside the function
+  echo "Result is: $RESULT"
+  let FIRST++  # this will affect the local variable FIRST
+  let SECOND++
+}
+
+#second way to declare a function
+subtraction() {
+  local FIRST=$1
+  local SECOND=$2
+  local RESULT=$(( SECOND - FIRST ))
+  echo "RESULT 2 is: $RESULT"
+}
+
+
+echo -n "Enter first number: "
+read FIRST
+echo -n "Enter second number: "
+read SECOND
+
+addition $FIRST $SECOND
+subtraction $FIRST $SECOND
+
+echo "Printing variables:"
+echo "First: $FIRST"
+echo "Second: $SECOND"
+echo "Result: $RESULT"
