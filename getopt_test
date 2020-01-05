@@ -1,0 +1,43 @@
+#!/bin/bash
+# After -o -> specify short parameters
+# if :: is after the parameters them the argument is optional
+# long argmunets are passed after --long parameter, separated with a ,
+# again :: -> optional argument, : --> required argument
+# telling what arguments to parse is with -- "$@" (which means all arguments)
+
+echo "All arguments: $@"
+opts=`getopt -o a::b:cde --long file::,name:,help -- "$@"`
+eval set -- "$opts"
+echo "All arguments after getopt: $@"
+
+while [ $# -gt 0 ]
+do
+    case "$1" in 
+      -a ) echo "parameter 'a' selected with argument: $2"
+          shift 2 # same as using shift two times which means shifting the arguments by removing the current one
+          ;;
+      -b ) echo "parameter 'b' selected with argument: $2"
+          shift 2 # same as using shift two times which means shifting the arguments by removing the current one
+          ;;
+      -c ) echo "parameter 'c' selected"
+          shift
+          ;;
+      -d ) echo "parameter 'd' selected"
+          shift
+          ;;
+      -e ) echo "parameter 'e' selected"
+          shift
+          ;;
+     --file ) echo "parameter 'file' selected with argument: $2"
+             shift 2
+             ;;
+     --name ) echo "parameter 'name' selected with argument: $2"
+             shift 2
+             ;;
+     --help ) echo "parameter 'help' selected with argument: $2"
+             shift 
+             ;;
+     *)      shift
+             ;;
+  esac
+done 

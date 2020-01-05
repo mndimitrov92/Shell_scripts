@@ -1,0 +1,34 @@
+#!/bin/bash
+# Description: Read data from users and give an option to recheck if provided data is correct
+
+echo -n "Enter name: "
+read NAME
+
+echo -n "Enter age: "
+read AGE
+
+echo -n "Enter department: "
+read DEPARTMENT
+
+echo "You have entered:"
+echo "NAME: 	  $NAME"
+echo "AGE: 	  $AGE"
+echo "DEPARTMENT: $DEPARTMENT"
+
+CHECK=0
+while [ $CHECK -eq 0 ]
+do
+echo -n "Is that correct? [Y/n]"
+read ANSWER
+
+case "$ANSWER" in 
+  "Y"|"y" ) echo "Great, do some stuff with this info" 
+            CHECK=1
+            ;;
+  "N"|"n" ) echo "Run the script again and fill in correct info"
+            CHECK=1
+            ;;
+  * ) echo "Invalid option" ;;
+esac
+
+done

@@ -1,0 +1,17 @@
+#!/bin/bash
+# Description: Usage of getopts for parameter handling
+# If the parameter is with a colon next to it -> requires an argument
+# So in this case a and b params require arguments after them 
+
+while getopts a:b:cd param; do
+  case $param in
+    a) echo "parameter 'a' with argument: $OPTARG"
+       ;;
+    b) echo "parameter 'b' with argument: $OPTARG"
+       ;;
+    c) echo "parameter 'c' selected (no colon - no argument)"
+       ;;
+    d) echo "parameter 'd' selected"
+       ;;
+  esac
+done
