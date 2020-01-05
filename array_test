@@ -1,0 +1,27 @@
+#!/bin/bash
+# Description: Script for listing all files in the directory with the length of the file name and whether it is writable
+# Array access:
+# ${ARRAY[0]}  -> first element of the array
+# ${ARRAY[@]}  -> all items in the array
+# ${ARRAY[*]}  -> all items in the array delimited by first character of IFS
+# ${!ARRAY[@]} -> all indexes in the array (@/*)
+# ${#ARRAY[@]} -> number of items in the array (@/*)
+# ${#ARRAY[0]} -> length of the first element in the array
+
+
+
+ARRAY=(`ls`)
+COUNTER=0
+
+echo -e "FILE NAME \t WRITABLE"
+for FILE in "${ARRAY[@]}"
+do
+  echo -n "$FILE"
+  echo -n "[${#ARRAY[$COUNTER]}]"
+  if [ -w $FILE ]; then
+    echo -e "\t YES"
+  else
+    echo -e "\t NO"
+  fi
+  let COUNTER++
+done
