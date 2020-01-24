@@ -1,0 +1,30 @@
+#!/bin/bash
+# A script containing some useful features
+# Useful comparison information can be found with -> help test
+# If the command is a builtin, the help menu is called with help, otherwise with the man page
+# Checking the type of the command is done with -> type -a <command>
+
+#Generate a random number
+# each time RANDOM is call , a number 0-32625 will be generated 
+SOME_NUMBER=$RANDOM
+echo "Random number: $SOME_NUMBER"
+
+# Read user input through read and pass it in a variable
+read -p "Say something: " SOMETHING
+echo "You said: $SOMETHING"
+
+# Read the current date and pipe it into the shasum command
+# to generate a checksum from the output
+OUTPUT=$(date +%s | shasum)
+echo "Output is: $OUTPUT"
+
+# Capture the basename and the dirname of a directory:
+BASEDIR=$(pwd | xargs dirname)
+BASENAME=$(pwd | xargs basename)
+echo "Name of the direcory is: ${BASENAME}"
+echo "The base directory is: ${BASEDIR}"
+
+
+# 2>&1 - redirect stderr to stdout basically identical to &> 
+# |& - pipe stderr and stdout
+ls some/fake/directory  2>&1 | xargs echo 
