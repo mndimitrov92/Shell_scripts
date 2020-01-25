@@ -1,0 +1,23 @@
+#!/bin/bash
+# Script testing some parameters of cut, awk ,sed commands
+
+# Cut command 
+# usual usage : cut [parameters] [file]
+# NOTE: Handles single character delimiters
+# Some parameters:
+# cut -c [Number/range] - show only the [Number character from each line]
+# -d [delimiter] - specify the delimiter for each line
+# -f [field_number] - specify the which field to show
+
+echo "This is a test line" | cut -c 1-3 ## First 3 character
+echo "This is another test line" | cut -d ' ' -f 4 # The fourth word from the echo command split by space  
+
+
+# Awk test
+# Useful parameter:
+# -F [Separator] -> Specify the field separator
+echo "This_is_a_test script" | awk -F '_' '{print $1, $4}' # The first and fourth output which were separated by _
+
+# OFS - output field separator , this may be specified in addition id the separator needs to be changed
+echo "This_is_a_test_script" | awk -F '_' -v OFS='_' '{print$1, $NF}' # Same as the above output by the space between words will be changed to _
+
