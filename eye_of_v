@@ -1,6 +1,6 @@
 #!/bin/bash
 # Description: Script for visualazing and fixing trailing tabs and whitespaces
-# ./eye_of_v [file-path] [-f | -- fix] [-h | -- help]
+# ./eye_of_v [file-path] [-f | --fix] [-h | -- help]
 
 function usage() {
   echo "USAGE: $0 [file-path] [-f | --fix] [-h | --help]"
@@ -37,21 +37,20 @@ done
 
 if [ $FIX -eq 1 ] && [ -f "$FILE" ]; then
     echo "Fixing spaces and tabs at the end of lines"
-    sed -i '' "s/[[:blank:]]\+$//g" "$FILE"   # Spaces at the end of a line ; for mac, the extensions needs to be specified
-    # sed -i '.py' 's/^[[:blank:]]\+//' "$FILE"  this is for the beginning of the line
+    sed -i '' "s/[[:blank:]]*$//g" "$FILE"   # Spaces at the end of a line ; for mac, the extensions needs to be specified
 fi
 
 # Display graphically spaces and tabs
 if [ -f $FILE ]; then
   LINES=0
-  REGEX_END="[[:blank:]]+$"
+  REGEX_END="[[:blank:]]*$"
 
   while IFS= read -r line
   do
     let LINES++ 
     #if there is no space or tab issue on the line, print the line
     # if space or tab at the end of the line exit status 9
-    echo "$line" | sed -e '' "/[[:blank:]]\+$/q9"  > /dev/null
+    echo "$line" | sed '' "/[[:blank:]]*$/q9" > /dev/null
     if [ $? -eq 0 ]; then
         printf %4s "$LINES:" >> temp.txt
         echo "$line" >> temp.txt
@@ -61,7 +60,7 @@ if [ -f $FILE ]; then
     printf %4s "$LINES: " >> temp.txt
 
     # print  on the same line the correct part 
-    echo -e -n "$line" | sed -e 's/^[[:blank:]\+//' -e 's/[[:blank:]]\+$//' >> temp.txt
+    echo -e -n "$line" | sed 's/[[:blank:]]*$//' >> temp.txt
 
     # print spaces /tabs with red background at the end of the line
     if [[ "$line" =~ $REGEX_END ]]; then
